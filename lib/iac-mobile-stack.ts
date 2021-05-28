@@ -32,7 +32,7 @@ export class IacMobileStack extends Stack {
     const synthAction = SimpleSynthAction.standardNpmSynth({
       sourceArtifact,
       cloudAssemblyArtifact,
-      installCommand: 'npm install -g npm && npm install typescript -g && npm install'
+      installCommand: 'npm install -g npm && npm install typescript -g && npm install && aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 530816317234.dkr.ecr.us-east-1.amazonaws.com',
     });
 
     this.pipeline = new CdkPipeline(this, 'PipeLine', {

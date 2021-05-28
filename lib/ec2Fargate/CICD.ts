@@ -127,6 +127,7 @@ export class ec2FargateCICD extends Stack {
             build: {
               commands: [
                 'ls -a -l',
+                'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 530816317234.dkr.ecr.us-east-1.amazonaws.com',
                 `docker build -t $ECR_REPO_URI:$TAG .`,
                 '$(aws ecr get-login --no-include-email)',
                 'docker push $ECR_REPO_URI:$TAG',
